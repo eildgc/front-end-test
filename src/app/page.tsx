@@ -1,7 +1,6 @@
 "use client";
-import Navbar from "@/app/components/(Mobile)/navbar/navbar";
 import Header from "@/app/components/(Mobile)/header/header";
-import React from "react";
+import React, { useReducer, useState } from "react";
 // import {isMobile} from 'react-device-detect';
 
 import {
@@ -11,8 +10,35 @@ import {
   isMobile,
 } from "react-device-detect";
 import CarouselCard from "./components/(Mobile)/carouselCard/carouselCard";
+import Banner from "./components/(Mobile)/banner/banner";
+import Button from "./components/button/button";
+import Popup from "./components/(Mobile)/popup/popUp";
+import { createPortal } from "react-dom";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const [reservationNumber, setReservationNumber] = useState(0);
+  const [bookLocationType, setBookLocationType] = useState("");
+  const [popupOpen, setPopupOpen] = useState(false);
+  const router = useRouter();
+
+  function generateReservation() {
+    return Math.floor(100000 + Math.random() * 900000);
+  }
+  const handleClick = (locationType: string) => {
+    setReservationNumber(generateReservation);
+    setPopupOpen(true);
+    setBookLocationType(locationType);
+  };
+  const handleClosePopup = () => {
+    setPopupOpen(false);
+  };
+  const handleConfirmBooking = () => {
+    router.push("/thankyou");
+  };
+
+  
+
   return (
     <>
       {/* <BrowserView>
@@ -22,13 +48,66 @@ export default function Home() {
         </main>
       </BrowserView> */}
       {/* <MobileView> */}
+      {popupOpen &&
+        createPortal(
+          <Popup
+            titleMessage={`Resumen de reservación ${bookLocationType}`}
+            message={`Your reservation number is ${reservationNumber}`}
+            isOpen={popupOpen}
+            onClose={handleClosePopup}
+            onConfirm={handleConfirmBooking}
+          />,
+          document.body
+        )}
       <header className="bg-white text-black">
-        <Navbar />
         <Header />
       </header>
-      <main className="bg-white text-black">
-        {/* <h1 className="text-inherit">This is rendered only on mobile</h1> */}
-       <CarouselCard />
+      <main className="bg-white text-black px-4">
+        <div className="flex flex-col pb-8">
+          <CarouselCard
+            title="HOTEL XCARET MÉXICO"
+            firstP="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem erat volutpat."
+            secondP="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. Aliquam erat volutpat."
+          />
+          <Button
+            href="#"
+            text="¡RESERVA AHORA!"
+            onClick={() => handleClick("HOTEL XCARET MÉXICO")}
+          />
+        </div>
+        <div className="flex flex-col pb-8">
+          <CarouselCard
+            title="HOTEL XCARET ARTE"
+            firstP="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem erat volutpat."
+            secondP="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. Aliquam erat volutpat."
+          />
+          <Button
+            href="#"
+            text="¡RESERVA AHORA!"
+            onClick={() => handleClick("HOTEL XCARET ARTE")}
+          />
+        </div>
+        <div className="flex flex-col pb-8">
+          <CarouselCard
+            title="casa de 
+
+            la playa"
+            firstP="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem erat volutpat."
+            secondP="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. Aliquam erat volutpat."
+          />
+          <Button
+            href="#"
+            text="¡RESERVA AHORA!"
+            onClick={() => handleClick("CASA DE LA PLAYA")}
+          />
+        </div>
+        <Banner
+          pharagraphs={[
+            "10 % de descuento en tarifas vigentes de Hotel Xcaret Arte. Los descuentos de compra anticipada pueden variar dependiendo de la fecha de reserva y la fecha de estadía. Periodo para reservar: Del 02 al 16 de mayo de 2022. Periodo para viajar: del 12 de julio al 16 de agosto del 2022. Sujeto a disponibilidad.",
+            "Políticas de cancelación: Cambios y cancelaciones de acuerdo a políticas establecidas antes de las 15:00 hrs hora local del día de llegada. Penalidad: 100% de la estancia",
+            "Restricciones: No aplica con otras promociones. Tarifa sujeta a cambios sin previo aviso.",
+          ]}
+        />
       </main>
       {/* </MobileView> */}
     </>

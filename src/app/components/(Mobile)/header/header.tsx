@@ -9,7 +9,7 @@ export default function Header() {
         <span className="text-4xl">
           15%
         </span>
-        <p className="block px-8 justify-center">
+        <p className="block px-8 text-stone-700 text-xl justify-center">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at
           porttitor sem. Aliquam erat volutpat.
         </p>

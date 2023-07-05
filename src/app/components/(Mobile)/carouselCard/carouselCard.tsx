@@ -2,7 +2,14 @@ import Image from "next/image";
 import React from "react";
 import Carousel from "../carousel/carousel";
 
-export default function CarouselCard() {
+interface CarouselCardProps {
+  title: string;
+  firstP: string;
+  secondP: string;
+}
+
+export default function CarouselCard(props: CarouselCardProps) {
+  const { title, firstP, secondP = "" } = props;
   return (
     <>
       <Carousel
@@ -34,15 +41,9 @@ export default function CarouselCard() {
             height={115}
           />
         </div>
-        <span className="uppercase text-2xl">hotel xcaret méxico</span>
-        <p className="block text-xl px-6">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at
-          porttitor sem erat volutpat.
-        </p>
-        <p className="block px-6">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at
-          porttitor sem. Aliquam erat volutpat.
-        </p>
+        <span className="uppercase text-2xl text-stone-900 whitespace-pre-line">{title}</span>
+        <p className="block text-xl text-stone-900">{firstP}</p>
+        <p className="block text-stone-700">{secondP}</p>
       </div>
     </>
   );

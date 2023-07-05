@@ -29,7 +29,7 @@ export default function Carousel(props: CarouselProps) {
 
   return (
     // <!-- slider container -->
-    <div className="grid place-items-center px-3">
+    <div className="grid place-items-center">
       {/* Slider */}
       <div className="slider relative w-full h-96 overflow-hidden">
          {/* <!-- slides --> */}
