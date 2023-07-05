@@ -1,8 +1,13 @@
 import Dropdown from "@/app/components/dropdown/dropdown";
 import Image from "next/image";
 import React from "react";
+import { useAppDispatch, useAppSelector } from "../../../../../lib/redux";
+import { setLanguage } from "../../../../../lib/redux/features/i18n-slice";
 
 export default function Navbar() {
+  const language = useAppSelector((state) => state.i18n.language);
+  const dispatch = useAppDispatch();
+  
   const currencies = [
     "MXN",
     "USD",
@@ -22,6 +27,10 @@ export default function Navbar() {
     "AUD",
     "JPY",
   ];
+  function toggleLanguage(e: React.MouseEvent<HTMLAnchorElement>) {
+    e.preventDefault();
+    dispatch(setLanguage(language === 'es' ? 'en' : 'es' ));
+  }
   return (
     <>
       <nav className="flex item-center text-xs py-2 pl-2 uppercase bg-white">
@@ -42,8 +51,8 @@ export default function Navbar() {
               </a>
             </li>
             <li className="">
-              <a href="" className="no-underline hover:underline transition-all duration-300 ease-in-out">
-                EN
+              <a href="" onClick={toggleLanguage} className="no-underline hover:underline transition-all duration-300 ease-in-out">
+                {language}
               </a>
             </li>
             <li className="">

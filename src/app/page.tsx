@@ -10,13 +10,19 @@ import {
   isMobile,
 } from "react-device-detect";
 import CarouselCard from "./components/(Mobile)/carouselCard/carouselCard";
-import Banner from "./components/(Mobile)/banner/banner";
+import Banner from "./components/banner/banner";
 import Button from "./components/button/button";
 import Popup from "./components/(Mobile)/popup/popUp";
 import { createPortal } from "react-dom";
 import { useRouter } from "next/navigation";
+import { useAppSelector } from "../../lib/redux";
+import { useFetchI18nQuery } from "../../lib/redux/features/i18n-api-slice";
 
 export default function Home() {
+  const language = useAppSelector((state) => state.i18n.language);
+  const { data, isFetching } = useFetchI18nQuery();
+  const content = data?.[language];
+
   const [reservationNumber, setReservationNumber] = useState(0);
   const [bookLocationType, setBookLocationType] = useState("");
   const [popupOpen, setPopupOpen] = useState(false);
@@ -37,7 +43,16 @@ export default function Home() {
     router.push("/thankyou");
   };
 
-  
+  if (isFetching) {
+    return (
+    <div>Loading</div>
+    );
+  }
+  if (!content) {
+    return (
+    <div>Data error</div>
+    );
+  }
 
   return (
     <>
@@ -60,7 +75,7 @@ export default function Home() {
           document.body
         )}
       <header className="bg-white text-black">
-        <Header />
+        <Header title={content.header.h1} />
       </header>
       <main className="bg-white text-black px-4">
         <div className="flex flex-col pb-8">

@@ -1,3 +1,5 @@
+'use client';
+import { Providers } from "../../lib/providers";
 import Footer from "./components/(Mobile)/footer/footer";
 import Navbar from "./components/(Mobile)/navbar/navbar";
 import "./globals.css";
@@ -17,38 +19,43 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full">
-      <body className={inter.className} style={{display: "flex", flexDirection: "column", height: "100%"}}>
-        <div style={{ flex: "1 0 auto" }}>
-          <Navbar />
-          {children}
-        </div>
-        <footer className="shrink-0">
-          <Footer
-            socials={[
-              {
-                srcUrl: "https://placekitten.com/24/24",
-                logo: {
+      <body
+        className={inter.className}
+        style={{ display: "flex", flexDirection: "column", height: "100%" }}
+      >
+        <Providers>
+          <div style={{ flex: "1 0 auto" }}>
+            <Navbar />
+            {children}
+          </div>
+          <footer className="shrink-0">
+            <Footer
+              socials={[
+                {
                   srcUrl: "https://placekitten.com/24/24",
-                  alt: "dsa",
+                  logo: {
+                    srcUrl: "https://placekitten.com/24/24",
+                    alt: "dsa",
+                  },
                 },
-              },
-              {
-                srcUrl: "https://placekitten.com/24/24",
-                logo: {
+                {
                   srcUrl: "https://placekitten.com/24/24",
-                  alt: "dsa",
+                  logo: {
+                    srcUrl: "https://placekitten.com/24/24",
+                    alt: "dsa",
+                  },
                 },
-              },
-            ]}
-            copy={"©Copyright Experiencias Xcaret Hotel S.A.P.I. de C.V."}
-            links={[
-              {
-                srcUrl: "#",
-                title: "Términos de Uso Aviso de Privacidad ",
-              },
-            ]}
-          />
-        </footer>
+              ]}
+              copy={"©Copyright Experiencias Xcaret Hotel S.A.P.I. de C.V."}
+              links={[
+                {
+                  srcUrl: "#",
+                  title: "Términos de Uso Aviso de Privacidad ",
+                },
+              ]}
+            />
+          </footer>
+        </Providers>
       </body>
     </html>
   );

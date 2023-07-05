@@ -1,10 +1,15 @@
 import React from "react";
 
-export default function Header() {
+interface HeaderProps {
+  title: string,
+}
+
+export default function Header(props:HeaderProps) {
+  const {title } = props;
   return (
       <div className="flex flex-col items-center gap-y-4 py-16 mb-8">
         <div className="text-inherit text-4xl uppercase">
-          viaja y vuela
+          {title}
         </div>
         <span className="text-4xl">
           15%
