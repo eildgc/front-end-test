@@ -32,7 +32,7 @@ export default function Carousel(props: CarouselProps) {
     <div className="grid place-items-center">
       {/* Slider */}
       <div className="slider relative w-full h-96 overflow-hidden">
-         {/* <!-- slides --> */}
+        {/* <!-- slides --> */}
         {slides.map((slide, index) => (
           <div
             className="slide w-full h-full absolute transition-transform duration-300 ease-in-out motion-reduce:transition-none"
@@ -47,7 +47,6 @@ export default function Carousel(props: CarouselProps) {
             />
           </div>
         ))}
-       
 
         {/* <!-- Control buttons --> */}
         <div className="absolute right-0 top-1/2 -translate-y-1/2 flex flex-col">

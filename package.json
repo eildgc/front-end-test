@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@iconify/icons-gridicons": "^1.2.9",
+    "@iconify/icons-ic": "^1.2.13",
+    "@iconify/icons-mdi": "^1.2.46",
     "@iconify/react": "^4.1.1",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/node": "20.3.3",
@@ -35,5 +37,4 @@
     "redux-logger": "3.0.6",
     "typescript": "5.1.3"
   }
-  
 }

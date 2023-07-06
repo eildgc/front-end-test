@@ -4,13 +4,14 @@ import Button from "../../button/button";
 interface PopupProps {
   titleMessage: string;
   message: string;
+  extraMessage: string;
   isOpen: boolean;
   onClose: () => void;
   onConfirm: () => void;
 }
 
 export default function Popup(props: PopupProps) {
-  const { titleMessage, message, isOpen, onClose, onConfirm } = props;
+  const { titleMessage, message, isOpen, extraMessage, onClose, onConfirm } = props;
 
   return (
     <div className="flex justify-center items-center px-2 overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -24,7 +25,8 @@ export default function Popup(props: PopupProps) {
             {titleMessage}
           </div>
           <div className="text-xl text-center py-4">{message}</div>
-          <div className="flex flex-col gap-2">
+          <div className="text-xl text-center py-4">{extraMessage}</div>
+          <div className="flex lg:flex-row-reverse flex-col gap-2">
             <Button text={"Continuar"} onClick={onConfirm} />
             <Button text={"Cerrar"} onClick={onClose} />
           </div>

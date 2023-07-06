@@ -1,7 +1,7 @@
-'use client';
+"use client";
 import { Providers } from "../../lib/providers";
-import Footer from "./components/(Mobile)/footer/footer";
-import Navbar from "./components/(Mobile)/navbar/navbar";
+import Footer from "./components/Mobile/footer/footer";
+import Navbar from "./components/Mobile/navbar/navbar";
 import "./globals.css";
 import { Inter } from "next/font/google";
 

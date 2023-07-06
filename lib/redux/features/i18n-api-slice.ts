@@ -54,16 +54,11 @@ export interface Button {
 
 export interface Carousel {
     text: string
-    desktop: Desktop[]
-    mobile: Mobile[]
+    desktop: ImgSrc[]
+    mobile: ImgSrc[]
 }
 
-export interface Desktop {
-    src: string
-    alt: string
-}
-
-export interface Mobile {
+export interface ImgSrc {
     src: string
     alt: string
 }

@@ -1,0 +1,24 @@
+{
+    "es": {
+        "resumeBookReservation": {
+            "reservationMessage": "resumen de reservación",
+            "instructions": "Por favor haz clic en continuar para confirmar tu reservación",
+            "closeButton": "Cerrar",
+            "confirmButton": "Continuar"
+        },
+        "thankYouPage": {
+
+        }
+        
+
+    },
+    "en": {
+        "resumeBookReservation": {
+            "reservationMessage": "Booked reservation resume",
+            "instructions": "Please click confirm to finish your reservation",
+            "closeButton": "Cerrar",
+            "confirmButton": "Confirm"
+        }
+        
+    }
+}

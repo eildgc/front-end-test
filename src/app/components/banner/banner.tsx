@@ -1,15 +1,17 @@
 interface BannerProps {
-  pharagraphs: string[];
+  paragraphs?: string[];
+  text: string;
 }
 
 export default function Banner(props: BannerProps) {
-  const { pharagraphs = [] } = props;
+  const { paragraphs = [], text } = props;
 
   return (
     <div className="flex flex-col gap-4 pb-4">
-      {pharagraphs.map((pharagraph) => (
-        <div key={pharagraph} className="text-stone-700">{pharagraph}</div>
-      ))}
+      {/* {paragraphs.map((paragraph) => (
+        <div key={paragraph} className="text-stone-700">{paragraph}</div>
+      ))} */}
+      <div className="text-stone-700" dangerouslySetInnerHTML={{__html:text}}></div>
     </div>
   );
 }

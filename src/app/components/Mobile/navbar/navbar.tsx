@@ -3,30 +3,15 @@ import Image from "next/image";
 import React from "react";
 import { useAppDispatch, useAppSelector } from "../../../../../lib/redux";
 import { setLanguage } from "../../../../../lib/redux/features/i18n-slice";
+import dropdownIcon from "@iconify/icons-gridicons/dropdown";
+import { useFetchI18nQuery } from "../../../../../lib/redux/features/i18n-api-slice";
 
 export default function Navbar() {
   const language = useAppSelector((state) => state.i18n.language);
   const dispatch = useAppDispatch();
-  
-  const currencies = [
-    "MXN",
-    "USD",
-    "EUR",
-    "CAD",
-    "COP",
-    "GBP",
-    "CLP",
-    "UYU",
-    "RUB",
-    "CNY",
-    "KRW",
-    "GTQ",
-    "ARS",
-    "PEN",
-    "CRC",
-    "AUD",
-    "JPY",
-  ];
+  const { data, isFetching } = useFetchI18nQuery();
+  const content = data?.[language];
+
   function toggleLanguage(e: React.MouseEvent<HTMLAnchorElement>) {
     e.preventDefault();
     dispatch(setLanguage(language === 'es' ? 'en' : 'es' ));
@@ -35,14 +20,15 @@ export default function Navbar() {
     <>
       <nav className="flex item-center text-xs py-2 pl-2 uppercase bg-white">
         <ul className="relative flex w-full item-center gap-6 text-black text-right">
-          <li className="grow w-24 h-8 left-0 relative">
+          <li className="relative grow w-4 h-8 left-0 flex items-center">
+            <div className="relative w-36 h-8 ">
             <Image
-              className="h-full w-full object-cover"
-              src="https://placekitten.com/200/300"
+              className="w-full h-full object-contain"
+              src={content?.navbar.logo??""}
               alt="Logo Hoteles Xcaret"
-              width={200}
-              height={200}
+              fill
             />
+            </div>
           </li>
           <div className="flex gap-4 items-center pr-4 relative right-0">
             <li className="">
@@ -56,7 +42,7 @@ export default function Navbar() {
               </a>
             </li>
             <li className="">
-              <Dropdown options={currencies}/>
+              <Dropdown options={content?.navbar.menu.currency} icon={dropdownIcon}/>
             </li>
           </div>
         </ul>
