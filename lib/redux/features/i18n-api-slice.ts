@@ -116,6 +116,7 @@ export interface AdditionalLanguageContent {
 export interface ResumeBookReservation {
     reservationMessage: string
     instructions: string
+    reservationNumber: string
     closeButton: string
     confirmButton: string
 }

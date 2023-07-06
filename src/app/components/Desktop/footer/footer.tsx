@@ -22,18 +22,19 @@ export default function Footer() {
         <div className="flex flex-row items-start justify-around">
           <div>
             <div className="flex flex-col py-2">
-              <div className="uppercase text-sm">
+              <div className="uppercase text-sm text-white">
                 {content?.prefooter.contactCenter.title}
               </div>
               <a
                 href={`mailto:${content?.prefooter.contactCenter.email}`}
                 target="_blank"
-                className="no-underline hover:underline transition-all duration-300 ease-in-out text-xs"
+                className="no-underline hover:underline transition-all duration-300 ease-in-out text-xs text-gray-200"
               >
                 {content?.prefooter.contactCenter.email}
               </a>
             </div>
-            <div className="flex gap-4 py-2 items-start justify-start">
+
+            <div className="flex gap-4 py-2 items-start justify-start text-gray-200 text-sm cursor-pointer">
               {content?.prefooter.numbers
                 .filter((number) => number.main && number.number)
                 .map((number) => (

@@ -3,6 +3,7 @@
         "resumeBookReservation": {
             "reservationMessage": "resumen de reservación",
             "instructions": "Por favor haz clic en continuar para confirmar tu reservación",
+            "reservationNumber": "El número de tu reservación es:",
             "closeButton": "Cerrar",
             "confirmButton": "Continuar"
         },
@@ -20,6 +21,7 @@
         "resumeBookReservation": {
             "reservationMessage": "Booked reservation resume",
             "instructions": "Please click confirm to finish your reservation",
+            "reservationNumber": "Your reservation number is:",
             "closeButton": "Close",
             "confirmButton": "Confirm"
         },

@@ -53,13 +53,13 @@ export default function MobileFooter() {
             </div>
           </div>
           <div className="flex flex-col py-2">
-            <div className="uppercase text-sm px-4">
+            <div className="uppercase text-sm px-4 text-white">
               {content?.prefooter.contactCenter.title}
             </div>
             <a
               href={`mailto:${content?.prefooter.contactCenter.email}`}
               target="_blank"
-              className="no-underline hover:underline transition-all duration-300 ease-in-out text-xs px-4"
+              className="no-underline hover:underline transition-all duration-300 ease-in-out text-xs text-gray-300 px-4"
             >
               {content?.prefooter.contactCenter.email}
             </a>
@@ -68,8 +68,8 @@ export default function MobileFooter() {
             {content?.prefooter.numbers
               .filter((number) => number.main && number.number)
               .map((number) => (
-                <div className="flex flex-col gap-0" key={number.name}>
-                  <span className="uppercase font-semibold text-sm">
+                <div className="flex flex-col gap-0 text-sm text-gray-300" key={number.name}>
+                  <span className="uppercase font-semibold">
                     {number.name}
                   </span>
                   <a href={`tel:${number.href}`} className="text-xs">
@@ -78,8 +78,8 @@ export default function MobileFooter() {
                 </div>
               ))}
             <div className="flex flex-col gap-0">
-              <details className="relative w-full">
-                <summary className="top-10">
+              <details className="relative w-full text-gray-300 text-sm">
+                <summary className="">
                   {
                     content?.prefooter.numbers.find((number) => !number.number)
                       ?.name

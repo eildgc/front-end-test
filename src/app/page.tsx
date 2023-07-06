@@ -68,8 +68,8 @@ export default function Home() {
       {popupOpen &&
         createPortal(
           <Popup
-            titleMessage={`Resumen de reservación ${bookLocationType}`}
-            message={`Your reservation number is ${reservationNumber}`}
+            titleMessage={`${additionalContent?.resumeBookReservation.reservationMessage} ${bookLocationType}`}
+            message={`${additionalContent?.resumeBookReservation.reservationNumber} ${reservationNumber}`}
             extraMessage={
               additionalContent?.resumeBookReservation.instructions ?? ""
             }
