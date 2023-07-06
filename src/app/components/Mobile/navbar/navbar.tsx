@@ -6,7 +6,7 @@ import { setLanguage } from "../../../../../lib/redux/features/i18n-slice";
 import dropdownIcon from "@iconify/icons-gridicons/dropdown";
 import { useFetchI18nQuery } from "../../../../../lib/redux/features/i18n-api-slice";
 
-export default function Navbar() {
+export default function MobileNavbar() {
   const language = useAppSelector((state) => state.i18n.language);
   const dispatch = useAppDispatch();
   const { data, isFetching } = useFetchI18nQuery();
@@ -18,10 +18,10 @@ export default function Navbar() {
   }
   return (
     <>
-      <nav className="flex item-center text-xs py-2 pl-2 uppercase bg-white">
-        <ul className="relative flex w-full item-center gap-6 text-black text-right">
-          <li className="relative grow w-4 h-8 left-0 flex items-center">
-            <div className="relative w-36 h-8 ">
+      <nav className="sticky top-0 z-10 flex item-center text-xs py-2 pl-2 uppercase bg-white">
+        <ul className="relative flex w-full item-center gap-1 text-black text-right">
+          <li className="relative grow left-0 flex items-center">
+            <div className="relative w-32 h-8">
             <Image
               className="w-full h-full object-contain"
               src={content?.navbar.logo??""}

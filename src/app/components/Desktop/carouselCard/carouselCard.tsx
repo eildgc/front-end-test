@@ -12,16 +12,20 @@ interface CarouselCardProps {
 }
 
 export default function CarouselCard(props: CarouselCardProps) {
-  const { title, subTitle, paragraph = "", logoSrcUrl, carousel, children } = props;
+  const {
+    title,
+    subTitle,
+    paragraph = "",
+    logoSrcUrl,
+    carousel,
+    children,
+  } = props;
   return (
-    <div className="relative w-96">
+    <div className="grid grid-cols-2 pt-24 pb-10 w-full h-full">
       {carousel}
-      <div className="flex flex-col items-center items-center pt-16 pb-8 gap-4 box-border">
-		{/* HACK: using hardcoded top-96 same as in carousel */}
-        <div className="absolute top-96 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-white box-content">
-          <div className="w-20 h-28 border-white border-8 relative">
-            <Image src={logoSrcUrl} alt={""} fill />
-          </div>
+      <div className="flex flex-col flex-start gap-4 box-border pl-10">
+        <div className="relative w-20 h-28">
+          <Image src={logoSrcUrl} alt={""} fill />
         </div>
         <span className="uppercase text-2xl text-stone-900 whitespace-pre-line">
           {title}

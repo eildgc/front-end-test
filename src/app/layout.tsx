@@ -1,9 +1,12 @@
 "use client";
+import { isBrowser, isMobile } from "react-device-detect";
 import { Providers } from "../../lib/providers";
-import Footer from "./components/Mobile/footer/footer";
-import Navbar from "./components/Mobile/navbar/navbar";
+import MobileFooter from "./components/Mobile/footer/footer";
+import MobileNavbar from "./components/Mobile/navbar/navbar";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import Navbar from "./components/desktop/navbar/navbar";
+import Footer from "./components/desktop/footer/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,11 +28,13 @@ export default function RootLayout({
       >
         <Providers>
           <div style={{ flex: "1 0 auto" }}>
-            <Navbar />
+            {isMobile && <MobileNavbar />}
+            {isBrowser && <Navbar />}
             {children}
           </div>
           <footer className="shrink-0">
-            <Footer />
+            {isMobile && <MobileFooter />}
+            {isBrowser && <Footer />}
           </footer>
         </Providers>
       </body>

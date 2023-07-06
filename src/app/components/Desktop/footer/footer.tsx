@@ -1,10 +1,10 @@
 import { useAppDispatch, useAppSelector } from "../../../../../lib/redux";
 import { useFetchI18nQuery } from "../../../../../lib/redux/features/i18n-api-slice";
 
-import { Icon } from '@iconify/react';
-import baselineFacebook from '@iconify/icons-ic/baseline-facebook';
-import twitterIcon from '@iconify/icons-mdi/twitter';
-import instagramIcon from '@iconify/icons-mdi/instagram';
+import { Icon } from "@iconify/react";
+import baselineFacebook from "@iconify/icons-ic/baseline-facebook";
+import twitterIcon from "@iconify/icons-mdi/twitter";
+import instagramIcon from "@iconify/icons-mdi/instagram";
 
 export default function MobileFooter() {
   const language = useAppSelector((state) => state.i18n.language);
@@ -19,19 +19,34 @@ export default function MobileFooter() {
   return (
     <div className="flex flex-col bg-gray-700">
       <div className="flex gap-4 justify-center py-4">
-        <div className="" >
+        <div className="">
           <a href={facebookHref}>
-            <Icon icon={baselineFacebook} width={24} height={24} className="text-white"></Icon>
+            <Icon
+              icon={baselineFacebook}
+              width={24}
+              height={24}
+              className="text-white"
+            ></Icon>
           </a>
         </div>
-        <div className="" >
+        <div className="">
           <a href={twitterHref}>
-            <Icon icon={twitterIcon} width={24} height={24} className="text-white"></Icon>
+            <Icon
+              icon={twitterIcon}
+              width={24}
+              height={24}
+              className="text-white"
+            ></Icon>
           </a>
         </div>
-        <div className="" >
+        <div className="">
           <a href={instagramHref}>
-            <Icon icon={instagramIcon} width={24} height={24} className="text-white"></Icon>
+            <Icon
+              icon={instagramIcon}
+              width={24}
+              height={24}
+              className="text-white"
+            ></Icon>
           </a>
         </div>
       </div>
@@ -47,11 +62,11 @@ export default function MobileFooter() {
           {content?.prefooter.contactCenter.email}
         </a>
       </div>
-      <div className="flex gap-4 px-4 py-2 pb-4">
+      <div className="flex gap-4 px-4 py-2 items-start justify-start">
         {content?.prefooter.numbers
           .filter((number) => number.main && number.number)
           .map((number) => (
-            <div className="flex flex-col gap-0" key={number.name}>
+            <div className="flex flex-col" key={number.name}>
               <span className="uppercase font-semibold text-sm">
                 {number.name}
               </span>
@@ -60,9 +75,9 @@ export default function MobileFooter() {
               </a>
             </div>
           ))}
-        <div className="flex flex-col gap-0">
-          <details className="relative w-full">
-            <summary className="top-10">
+        <div className="flex flex-col">
+          <details className="">
+            <summary className="">
               {
                 content?.prefooter.numbers.find((number) => !number.number)
                   ?.name
@@ -73,7 +88,7 @@ export default function MobileFooter() {
               .map((number) => (
                 <div
                   key={number.name}
-                  className="flex flex-col gap-0 bg-white text-stone-700 text-xs p-1 "
+                  className="flex flex-col bg-white text-stone-700 text-xs p-1 "
                 >
                   <a className="no-underline">{number.name}</a>
                   <a
@@ -89,19 +104,19 @@ export default function MobileFooter() {
         </div>
       </div>
       <div className="flex flex-col gap-2 place-items-center bg-black text-white text-xs px-4">
-        <div className="py-2">
+        <div className="pb-2 w-full flex py-2 justify-around items-center">
           {content?.footer.copy}
+          <div className="self-end">
+            {content?.footer.links.map((link) => (
+              <a
+                href={link.href}
+                key={link.tittle}
+                className="no-underline hover:underline transition-all duration-300 ease-in-out pr-2"
+              >
+                {link.tittle}
+              </a>
+            ))}
           </div>
-        <div className="pb-2 self-start">
-          {content?.footer.links.map((link) => (
-            <a
-              href={link.href}
-              key={link.tittle}
-              className="no-underline hover:underline transition-all duration-300 ease-in-out pr-1"
-            >
-              {link.tittle}
-            </a>
-          ))}
         </div>
       </div>
     </div>

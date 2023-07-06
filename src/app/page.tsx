@@ -21,8 +21,8 @@ import {
 } from "../../lib/redux/features/i18n-api-slice";
 import MobileHeader from "./components/Mobile/header/header";
 import Carousel from "./components/carousel/carousel";
-import Header from "./components/Desktop/(header)/header";
-import CarouselCard from "./components/Desktop/carouselCard/carouselCard";
+import Header from "./components/desktop/header/header";
+import CarouselCard from "./components/desktop/carouselCard/carouselCard";
 
 export default function Home() {
   const language = useAppSelector((state) => state.i18n.language);
@@ -61,19 +61,14 @@ export default function Home() {
 
   return (
     <>
-      {/* <BrowserView>
-        <header></header>
-        <main>
-          <h1>This is rendered only in browser</h1>
-        </main>
-      </BrowserView> */}
-      {/* <MobileView> */}
       {popupOpen &&
         createPortal(
           <Popup
             titleMessage={`Resumen de reservación ${bookLocationType}`}
             message={`Your reservation number is ${reservationNumber}`}
-            extraMessage={additionalContent?.resumeBookReservation.instructions ?? ''}
+            extraMessage={
+              additionalContent?.resumeBookReservation.instructions ?? ""
+            }
             isOpen={popupOpen}
             onClose={handleClosePopup}
             onConfirm={handleConfirmBooking}
@@ -100,7 +95,8 @@ export default function Home() {
           />
         )}
       </header>
-      <main className="bg-white text-black px-4">
+
+      <main className="bg-white text-black px-4 md:px-0">
         <div className="flex flex-col pb-8">
           {content.promotions.map((promotion) => (
             <div key={promotion.title}>
@@ -127,7 +123,8 @@ export default function Home() {
                   subTitle={promotion.Subtitle}
                   paragraph={promotion.paragraphs[0]}
                   logoSrcUrl={promotion.logoPromo}
-                  carousel={<Carousel slides={content.carousel.mobile} />}
+                  carousel={<Carousel slides={content.carousel.mobile}
+                   />}
                 >
                   <Button
                     href={content.buttonBook.href}
@@ -138,41 +135,9 @@ export default function Home() {
               )}
             </div>
           ))}
-          {/* <CarouselCard
-            title="HOTEL XCARET MÉXICO"
-            subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem erat volutpat."
-            pharagraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. Aliquam erat volutpat." logoSrcUrl={""}          />
-          <Button
-            href="#"
-            text="¡RESERVA AHORA!"
-            onClick={() => handleClick("HOTEL XCARET MÉXICO")}
-          />
-        </div>
-        <div className="flex flex-col pb-8">
-          <CarouselCard
-            title="HOTEL XCARET ARTE"
-            subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem erat volutpat."
-            pharagraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. Aliquam erat volutpat." logoSrcUrl={""}          />
-          <Button
-            href="#"
-            text="¡RESERVA AHORA!"
-            onClick={() => handleClick("HOTEL XCARET ARTE")}
-          />
-        </div>
-        <div className="flex flex-col pb-8">
-          <CarouselCard
-            title="casa de la playa"
-            subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem erat volutpat."
-            pharagraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. Aliquam erat volutpat." logoSrcUrl={""}          />
-          <Button
-            href="#"
-            text="¡RESERVA AHORA!"
-            onClick={() => handleClick("CASA DE LA PLAYA")}
-          /> */}
         </div>
         <Banner text={content.legals} />
       </main>
-      {/* </MobileView> */}
     </>
   );
 }
