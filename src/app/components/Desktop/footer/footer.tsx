@@ -1,3 +1,4 @@
+"use client";
 import { useAppDispatch, useAppSelector } from "../../../../../lib/redux";
 import { useFetchI18nQuery } from "../../../../../lib/redux/features/i18n-api-slice";
 

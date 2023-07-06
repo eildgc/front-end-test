@@ -1,11 +1,8 @@
-"use client";
-import { isMobile } from "react-device-detect";
+// "use client";
 import { Providers } from "../../lib/providers";
-import MobileFooter from "./components/Mobile/footer/footer";
+import FooterWrapper from "./components/footerWrapper";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import Footer from "./components/desktop/footer/footer";
-import { LazyMotion, domAnimation } from "framer-motion";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,16 +23,13 @@ export default function RootLayout({
         style={{ display: "flex", flexDirection: "column", height: "100%" }}
       >
         <Providers>
-          <LazyMotion features={domAnimation}>
             <div
               style={{ flex: "1 0 auto" }}
               className="max-w-7xl w-full mx-auto" id="content"
             >
               {children}
             </div>
-            {isMobile && <MobileFooter />}
-            {!isMobile && <Footer />}
-          </LazyMotion>
+            <FooterWrapper />
         </Providers>
       </body>
     </html>

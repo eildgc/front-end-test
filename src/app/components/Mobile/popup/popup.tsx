@@ -1,5 +1,7 @@
 import Button from "../../button/button";
-import { AnimatePresence, m } from "framer-motion";
+// import { AnimatePresence } from "framer-motion";
+import * as motion from '../../../../../lib/motion';
+
 
 interface PopupProps {
   titleMessage: string;
@@ -15,9 +17,9 @@ export default function Popup(props: PopupProps) {
     props;
 
   return (
-    <AnimatePresence>
+    <motion.AnimatePresence>
       {isOpen && (
-        <m.div
+        <motion.m.div
           key={"popup"}
           initial={{ y: 200, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -40,8 +42,8 @@ export default function Popup(props: PopupProps) {
               </div>
             </div>
           </div>
-        </m.div>
+        </motion.m.div>
       )}
-    </AnimatePresence>
+    </motion.AnimatePresence>
   );
 }

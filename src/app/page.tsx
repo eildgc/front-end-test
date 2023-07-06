@@ -18,7 +18,8 @@ import Header from "./components/desktop/header/header";
 import CarouselCard from "./components/desktop/carouselCard/carouselCard";
 import MobileNavbar from "./components/Mobile/navbar/navbar";
 import Navbar from "./components/desktop/navbar/navbar";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, LazyMotion, domAnimation } from "framer-motion";
+
 
 export default function Home() {
   const language = useAppSelector((state) => state.i18n.language);
@@ -57,84 +58,86 @@ export default function Home() {
 
   return (
     <>
-      {isMobile && <MobileNavbar />}
-      {!isMobile && <Navbar />}
-      {createPortal(
-        <AnimatePresence>
-          <Popup
-            titleMessage={`${additionalContent?.resumeBookReservation.reservationMessage} ${bookLocationType}`}
-            message={`${additionalContent?.resumeBookReservation.reservationNumber} ${reservationNumber}`}
-            extraMessage={
-              additionalContent?.resumeBookReservation.instructions ?? ""
-            }
-            isOpen={popupOpen}
-            onClose={handleClosePopup}
-            onConfirm={handleConfirmBooking}
-          />
-        </AnimatePresence>,
-        document.getElementById("content") ?? document.body
-      )}
-
-      <header className=" text-black">
-        {isMobile && (
-          <MobileHeader
-            title={content.header.h1}
-            logoPromoSrc={content.promotions[0].imagePromo}
-            discount={content.header.discount}
-            paragraphs={content.header.paragraphs}
-          />
+      <LazyMotion features={domAnimation}>
+        {isMobile && <MobileNavbar />}
+        {!isMobile && <Navbar />}
+        {createPortal(
+          <AnimatePresence>
+            <Popup
+              titleMessage={`${additionalContent?.resumeBookReservation.reservationMessage} ${bookLocationType}`}
+              message={`${additionalContent?.resumeBookReservation.reservationNumber} ${reservationNumber}`}
+              extraMessage={
+                additionalContent?.resumeBookReservation.instructions ?? ""
+              }
+              isOpen={popupOpen}
+              onClose={handleClosePopup}
+              onConfirm={handleConfirmBooking}
+            />
+          </AnimatePresence>,
+          document.getElementById("content") ?? document.body
         )}
-        {!isMobile && (
-          <Header
-            title={content.header.h1}
-            logoPromoSrc={content.promotions[0].imagePromo}
-            discount={content.header.discount}
-            paragraphs={content.header.paragraphs}
-          />
-        )}
-      </header>
 
-      <main className="bg-white text-black px-4 md:px-0">
-        <div className="flex flex-col pb-8">
-          {content.promotions.map((promotion) => (
-            <div key={promotion.title}>
-              {isMobile && (
-                <MobileCarouselCard
-                  key={promotion.title}
-                  title={promotion.title}
-                  subTitle={promotion.Subtitle}
-                  paragraph={promotion.paragraphs[0]}
-                  logoSrcUrl={promotion.logoPromo}
-                  carousel={<Carousel slides={content.carousel.mobile} />}
-                >
-                  <Button
-                    href={content.buttonBook.href}
-                    text={content.buttonBook.text}
-                    onClick={() => handleClick(promotion.title)}
-                  />
-                </MobileCarouselCard>
-              )}
-              {!isMobile && (
-                <CarouselCard
-                  key={promotion.title}
-                  title={promotion.title}
-                  subTitle={promotion.Subtitle}
-                  paragraph={promotion.paragraphs[0]}
-                  logoSrcUrl={promotion.logoPromo}
-                  carousel={<Carousel slides={content.carousel.mobile} />}
-                >
-                  <Button
-                    href={content.buttonBook.href}
-                    text={content.buttonBook.text}
-                    onClick={() => handleClick(promotion.title)}
-                  />
-                </CarouselCard>
-              )}
-            </div>
-          ))}
-        </div>
-        <Banner text={content.legals} />
-      </main>
+        <header className=" text-black">
+          {isMobile && (
+            <MobileHeader
+              title={content.header.h1}
+              logoPromoSrc={content.promotions[0].imagePromo}
+              discount={content.header.discount}
+              paragraphs={content.header.paragraphs}
+            />
+          )}
+          {!isMobile && (
+            <Header
+              title={content.header.h1}
+              logoPromoSrc={content.promotions[0].imagePromo}
+              discount={content.header.discount}
+              paragraphs={content.header.paragraphs}
+            />
+          )}
+        </header>
+
+        <main className="bg-white text-black px-4 md:px-0">
+          <div className="flex flex-col pb-8">
+            {content.promotions.map((promotion) => (
+              <div key={promotion.title}>
+                {isMobile && (
+                  <MobileCarouselCard
+                    key={promotion.title}
+                    title={promotion.title}
+                    subTitle={promotion.Subtitle}
+                    paragraph={promotion.paragraphs[0]}
+                    logoSrcUrl={promotion.logoPromo}
+                    carousel={<Carousel slides={content.carousel.mobile} />}
+                  >
+                    <Button
+                      href={content.buttonBook.href}
+                      text={content.buttonBook.text}
+                      onClick={() => handleClick(promotion.title)}
+                    />
+                  </MobileCarouselCard>
+                )}
+                {!isMobile && (
+                  <CarouselCard
+                    key={promotion.title}
+                    title={promotion.title}
+                    subTitle={promotion.Subtitle}
+                    paragraph={promotion.paragraphs[0]}
+                    logoSrcUrl={promotion.logoPromo}
+                    carousel={<Carousel slides={content.carousel.mobile} />}
+                  >
+                    <Button
+                      href={content.buttonBook.href}
+                      text={content.buttonBook.text}
+                      onClick={() => handleClick(promotion.title)}
+                    />
+                  </CarouselCard>
+                )}
+              </div>
+            ))}
+          </div>
+          <Banner text={content.legals} />
+        </main>
+      </LazyMotion>
     </>
   );
 }
