@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import React, { useEffect, useState } from "react";
 import { isMobile } from "react-device-detect";
 import MobileCarouselCard from "./components/mobile/carouselCard/carouselCard";
