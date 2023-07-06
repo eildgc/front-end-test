@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { isMobile } from "react-device-detect";
 import MobileCarouselCard from "./components/mobile/carouselCard/carouselCard";
 import Banner from "./components/banner/banner";
@@ -20,8 +20,11 @@ import MobileNavbar from "./components/mobile/navbar/navbar";
 import Navbar from "./components/desktop/navbar/navbar";
 import { AnimatePresence, LazyMotion, domAnimation } from "framer-motion";
 
-
 export default function Home() {
+  const [isMobileCustom, setIsMobileCustom] = useState(false);
+  useEffect(() => {
+    setIsMobileCustom(isMobile);
+  }, []);
   const language = useAppSelector((state) => state.i18n.language);
   const { data, isFetching } = useFetchI18nQuery();
   const { data: additionalData, isFetching: isFetchingAdditionalData } =
@@ -37,7 +40,9 @@ export default function Home() {
   function generateReservation() {
     return Math.floor(100000 + Math.random() * 900000);
   }
-  const handleClick = (locationType: string) => {
+
+  const handleClick = (e: React.MouseEvent<HTMLElement>,locationType: string) => {
+    e.preventDefault();
     setReservationNumber(generateReservation);
     setPopupOpen(true);
     setBookLocationType(locationType);
@@ -59,8 +64,8 @@ export default function Home() {
   return (
     <>
       <LazyMotion features={domAnimation}>
-        {isMobile && <MobileNavbar />}
-        {!isMobile && <Navbar />}
+        {isMobileCustom && <MobileNavbar />}
+        {!isMobileCustom && <Navbar />}
         {createPortal(
           <AnimatePresence>
             <Popup
@@ -78,7 +83,7 @@ export default function Home() {
         )}
 
         <header className=" text-black">
-          {isMobile && (
+          {isMobileCustom && (
             <MobileHeader
               title={content.header.h1}
               logoPromoSrc={content.promotions[0].imagePromo}
@@ -86,7 +91,7 @@ export default function Home() {
               paragraphs={content.header.paragraphs}
             />
           )}
-          {!isMobile && (
+          {!isMobileCustom && (
             <Header
               title={content.header.h1}
               logoPromoSrc={content.promotions[0].imagePromo}
@@ -100,7 +105,7 @@ export default function Home() {
           <div className="flex flex-col pb-8">
             {content.promotions.map((promotion) => (
               <div key={promotion.title}>
-                {isMobile && (
+                {isMobileCustom && (
                   <MobileCarouselCard
                     key={promotion.title}
                     title={promotion.title}
@@ -112,11 +117,11 @@ export default function Home() {
                     <Button
                       href={content.buttonBook.href}
                       text={content.buttonBook.text}
-                      onClick={() => handleClick(promotion.title)}
+                      onClick={(e) => handleClick(e,promotion.title)}
                     />
                   </MobileCarouselCard>
                 )}
-                {!isMobile && (
+                {!isMobileCustom && (
                   <CarouselCard
                     key={promotion.title}
                     title={promotion.title}
@@ -128,7 +133,7 @@ export default function Home() {
                     <Button
                       href={content.buttonBook.href}
                       text={content.buttonBook.text}
-                      onClick={() => handleClick(promotion.title)}
+                      onClick={(e) => handleClick(e,promotion.title)}
                     />
                   </CarouselCard>
                 )}

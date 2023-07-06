@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { useAppDispatch, useAppSelector } from "../../../../../lib/redux";
 import { useFetchI18nQuery } from "../../../../../lib/redux/features/i18n-api-slice";
 
@@ -79,7 +79,7 @@ export default function MobileFooter() {
                   </a>
                 </div>
               ))}
-            <div className="flex flex-col gap-0">
+            <div className="flex flex-col flex-wrap gap-0">
               <details className="relative w-full text-gray-300 text-sm">
                 <summary className="">
                   {

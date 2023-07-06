@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 import { Providers } from "../../lib/providers";
 import FooterWrapper from "./components/footerWrapper";
 import "./globals.css";
