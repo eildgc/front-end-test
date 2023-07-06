@@ -14,10 +14,10 @@ import {
 } from "../../lib/redux/features/i18n-api-slice";
 import MobileHeader from "./components/mobile/header/header";
 import Carousel from "./components/carousel/carousel";
-import Header from "./components/desktop/header/header";
-import CarouselCard from "./components/desktop/carouselCard/carouselCard";
+import Header from "./components/desktop2/header/header";
+import CarouselCard from "./components/desktop2/carouselCard/carouselCard";
 import MobileNavbar from "./components/mobile/navbar/navbar";
-import Navbar from "./components/desktop/navbar/navbar";
+import Navbar from "./components/desktop2/navbar/navbar";
 import { AnimatePresence, LazyMotion, domAnimation } from "framer-motion";
 
 

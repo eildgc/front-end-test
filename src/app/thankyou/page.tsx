@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import Button from "../components/button/button";
 import { isMobile } from "react-device-detect";
 import MobileNavbar from "../components/mobile/navbar/navbar";
-import Navbar from "../components/desktop/navbar/navbar";
+import Navbar from "../components/desktop2/navbar/navbar";
 import {
   useFetchAdditionalI18nQuery,
   useFetchI18nQuery,
