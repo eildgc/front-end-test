@@ -23,6 +23,8 @@ import MobileHeader from "./components/Mobile/header/header";
 import Carousel from "./components/carousel/carousel";
 import Header from "./components/desktop/header/header";
 import CarouselCard from "./components/desktop/carouselCard/carouselCard";
+import MobileNavbar from "./components/Mobile/navbar/navbar";
+import Navbar from "./components/desktop/navbar/navbar";
 
 export default function Home() {
   const language = useAppSelector((state) => state.i18n.language);
@@ -61,6 +63,8 @@ export default function Home() {
 
   return (
     <>
+      {isMobile && <MobileNavbar />}
+      {!isMobile && <Navbar />}
       {popupOpen &&
         createPortal(
           <Popup
@@ -85,8 +89,7 @@ export default function Home() {
             paragraphs={content.header.paragraphs}
           />
         )}
-
-        {isBrowser && (
+        {!isMobile && (
           <Header
             title={content.header.h1}
             logoPromoSrc={content.promotions[0].imagePromo}
@@ -116,15 +119,14 @@ export default function Home() {
                   />
                 </MobileCarouselCard>
               )}
-              {isBrowser && (
+              {!isMobile && (
                 <CarouselCard
                   key={promotion.title}
                   title={promotion.title}
                   subTitle={promotion.Subtitle}
                   paragraph={promotion.paragraphs[0]}
                   logoSrcUrl={promotion.logoPromo}
-                  carousel={<Carousel slides={content.carousel.mobile}
-                   />}
+                  carousel={<Carousel slides={content.carousel.mobile} />}
                 >
                   <Button
                     href={content.buttonBook.href}

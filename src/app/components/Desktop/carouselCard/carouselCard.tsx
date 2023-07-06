@@ -23,15 +23,15 @@ export default function CarouselCard(props: CarouselCardProps) {
   return (
     <div className="grid grid-cols-2 pt-24 pb-10 w-full h-full">
       {carousel}
-      <div className="flex flex-col flex-start gap-4 box-border pl-10">
+      <div className="flex flex-col flex-start justify-around gap-4 box-border pl-10">
         <div className="relative w-20 h-28">
           <Image src={logoSrcUrl} alt={""} fill />
         </div>
-        <span className="uppercase text-2xl text-stone-900 whitespace-pre-line">
+        <span className="uppercase text-3xl text-stone-900">
           {title}
         </span>
-        <p className="block text-xl text-stone-900">{subTitle}</p>
-        <p className="block text-stone-700">{paragraph}</p>
+        <p className="block text-2xl text-stone-900 w-96">{subTitle}</p>
+        <p className="block text-stone-700 text-xl w-96">{paragraph}</p>
         {children}
       </div>
     </div>

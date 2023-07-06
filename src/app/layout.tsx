@@ -1,5 +1,5 @@
 "use client";
-import { isBrowser, isMobile } from "react-device-detect";
+import { BrowserView, isBrowser, isMobile } from "react-device-detect";
 import { Providers } from "../../lib/providers";
 import MobileFooter from "./components/Mobile/footer/footer";
 import MobileNavbar from "./components/Mobile/navbar/navbar";
@@ -27,15 +27,11 @@ export default function RootLayout({
         style={{ display: "flex", flexDirection: "column", height: "100%" }}
       >
         <Providers>
-          <div style={{ flex: "1 0 auto" }}>
-            {isMobile && <MobileNavbar />}
-            {isBrowser && <Navbar />}
+          <div style={{ flex: "1 0 auto" }} className="max-w-7xl mx-auto">
             {children}
           </div>
-          <footer className="shrink-0">
-            {isMobile && <MobileFooter />}
-            {isBrowser && <Footer />}
-          </footer>
+          {isMobile && <MobileFooter />}
+          {!isMobile && <Footer />}
         </Providers>
       </body>
     </html>

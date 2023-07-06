@@ -109,7 +109,8 @@ export interface AdditionalI18nContent {
 
 export interface AdditionalLanguageContent {
     resumeBookReservation: ResumeBookReservation
-    thankYouPage: ThankYouPage
+    thankYouPage: ThankYouPage,
+    button: Button,
 }
 
 export interface ResumeBookReservation {
@@ -119,8 +120,14 @@ export interface ResumeBookReservation {
     confirmButton: string
 }
 
-export interface ThankYouPage { }
+export interface ThankYouPage {
+    message: string
+    thankyou: string
+}
 
+export interface Button {
+    text: string
+}
 
 export const i18nApiSlice = createApi({
     reducerPath: 'i18nApi',

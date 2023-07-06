@@ -31,7 +31,7 @@ export default function Carousel(props: CarouselProps) {
     // <!-- slider container -->
     <div className="grid place-items-center">
       {/* Slider */}
-      <div className="slider relative w-full h-96 overflow-hidden">
+      <div className="slider relative w-full h-96 md:h-screen-70 overflow-hidden">
         {/* <!-- slides --> */}
         {slides.map((slide, index) => (
           <div

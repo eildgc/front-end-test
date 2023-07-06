@@ -12,7 +12,7 @@ export default function Header(props: HeaderProps) {
   const { title, logoPromoSrc, discount, paragraphs } = props;
   return (
     <div
-      className={"relative flex flex-col items-center justify-center h-screen max-2xl:"}
+      className={"relative flex flex-col items-center justify-center h-screen-70"}
     >
       <Image
         src={logoPromoSrc}
