@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import { isMobile } from "react-device-detect";
-import MobileCarouselCard from "./components/mobile/carouselCard/carouselCard";
+import MobileCarouselCard from "./components/mobile2/carouselCard/carouselCard";
 import Banner from "./components/banner/banner";
 import Button from "./components/button/button";
-import Popup from "./components/mobile/popup/popup";
+import Popup from "./components/mobile2/popup/popup";
 import { createPortal } from "react-dom";
 import { useRouter } from "next/navigation";
 import { useAppSelector } from "../../lib/redux";
@@ -12,11 +12,11 @@ import {
   useFetchAdditionalI18nQuery,
   useFetchI18nQuery,
 } from "../../lib/redux/features/i18n-api-slice";
-import MobileHeader from "./components/mobile/header/header";
+import MobileHeader from "./components/mobile2/header/header";
 import Carousel from "./components/carousel/carousel";
 import Header from "./components/desktop/header/header";
 import CarouselCard from "./components/desktop/carouselCard/carouselCard";
-import MobileNavbar from "./components/mobile/navbar/navbar";
+import MobileNavbar from "./components/mobile2/navbar/navbar";
 import Navbar from "./components/desktop/navbar/navbar";
 import { AnimatePresence, LazyMotion, domAnimation } from "framer-motion";
 
