@@ -1,13 +1,6 @@
 "use client";
-import React, { useReducer, useState } from "react";
-// import {isMobile} from 'react-device-detect';
-
-import {
-  BrowserView,
-  MobileView,
-  isBrowser,
-  isMobile,
-} from "react-device-detect";
+import React, { useState } from "react";
+import { isMobile } from "react-device-detect";
 import MobileCarouselCard from "./components/Mobile/carouselCard/carouselCard";
 import Banner from "./components/banner/banner";
 import Button from "./components/button/button";
@@ -25,6 +18,7 @@ import Header from "./components/desktop/header/header";
 import CarouselCard from "./components/desktop/carouselCard/carouselCard";
 import MobileNavbar from "./components/Mobile/navbar/navbar";
 import Navbar from "./components/desktop/navbar/navbar";
+import { AnimatePresence } from "framer-motion";
 
 export default function Home() {
   const language = useAppSelector((state) => state.i18n.language);
@@ -65,8 +59,8 @@ export default function Home() {
     <>
       {isMobile && <MobileNavbar />}
       {!isMobile && <Navbar />}
-      {popupOpen &&
-        createPortal(
+      {createPortal(
+        <AnimatePresence>
           <Popup
             titleMessage={`${additionalContent?.resumeBookReservation.reservationMessage} ${bookLocationType}`}
             message={`${additionalContent?.resumeBookReservation.reservationNumber} ${reservationNumber}`}
@@ -76,9 +70,10 @@ export default function Home() {
             isOpen={popupOpen}
             onClose={handleClosePopup}
             onConfirm={handleConfirmBooking}
-          />,
-          document.body
-        )}
+          />
+        </AnimatePresence>,
+        document.getElementById("content") ?? document.body
+      )}
 
       <header className=" text-black">
         {isMobile && (

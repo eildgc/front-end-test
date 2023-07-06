@@ -1,6 +1,4 @@
 import Image from "next/image";
-import React from "react";
-
 interface HeaderProps {
   title: string;
   logoPromoSrc: string;
@@ -22,13 +20,13 @@ export default function Header(props: HeaderProps) {
         alt=""
         className="absolute inset-0 -z-10"
       />
-      <div className="">
-        <div className="flex text-inherit text-5xl uppercase justify-center">
+      <div className="flex flex-col w-full max-w-2xl">
+        <div className="flex text-inherit text-5xl uppercase justify-center self-start">
           {title}
         </div>
         <div className="flex items-center justify-center gap-4">
           <span className="text-4xl">{discount}</span>
-          <p className="block text-stone-700 text-xl justify-center w-1/2">
+          <p className="block text-stone-700 text-xl justify-center w-full">
             {paragraphs.join(" ")}
           </p>
         </div>

@@ -1,7 +1,5 @@
 import Image from "next/image";
 import React, { ReactNode } from "react";
-import Carousel from "../../carousel/carousel";
-
 interface CarouselCardProps {
   title: string;
   logoSrcUrl: string;
@@ -27,9 +25,7 @@ export default function CarouselCard(props: CarouselCardProps) {
         <div className="relative w-20 h-28">
           <Image src={logoSrcUrl} alt={""} fill />
         </div>
-        <span className="uppercase text-3xl text-stone-900">
-          {title}
-        </span>
+        <span className="uppercase text-3xl text-stone-900">{title}</span>
         <p className="block text-2xl text-stone-900 w-96">{subTitle}</p>
         <p className="block text-stone-700 text-xl w-96">{paragraph}</p>
         {children}

@@ -68,10 +68,11 @@ export default function MobileFooter() {
             {content?.prefooter.numbers
               .filter((number) => number.main && number.number)
               .map((number) => (
-                <div className="flex flex-col gap-0 text-sm text-gray-300" key={number.name}>
-                  <span className="uppercase font-semibold">
-                    {number.name}
-                  </span>
+                <div
+                  className="flex flex-col gap-0 text-sm text-gray-300"
+                  key={number.name}
+                >
+                  <span className="uppercase font-semibold">{number.name}</span>
                   <a href={`tel:${number.href}`} className="text-xs">
                     {number.number}
                   </a>
