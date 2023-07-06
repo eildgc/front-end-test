@@ -25,6 +25,7 @@ export default function MobileNavbar() {
         <ul className="relative flex w-full item-center gap-1 text-black text-right">
           <li className="relative grow left-0 flex items-center">
             <div className="relative w-32 md:w-52 h-8">
+              {/* TODO: optimize performance using sizes attribute */}
               <Image
                 className="w-full h-full object-contain"
                 src={content?.navbar.logo ?? ""}

@@ -23,6 +23,7 @@ export default function CarouselCard(props: CarouselCardProps) {
       {carousel}
       <div className="flex flex-col flex-start justify-around gap-4 box-border pl-10">
         <div className="relative w-20 h-28">
+            {/* TODO: optimize performance using sizes attribute */}
           <Image src={logoSrcUrl} alt={""} fill />
         </div>
         <span className="uppercase text-3xl text-stone-900">{title}</span>

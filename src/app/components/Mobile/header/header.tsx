@@ -11,6 +11,7 @@ export default function MobileHeader(props: HeaderProps) {
   const { title, logoPromoSrc, discount, paragraphs } = props;
   return (
     <div className={"relative flex flex-col items-center gap-y-4 py-16 mb-8"}>
+      {/* TODO: optimize performance using sizes attribute */}
       <Image
         src={logoPromoSrc}
         fill

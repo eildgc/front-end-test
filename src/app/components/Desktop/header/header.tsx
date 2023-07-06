@@ -14,6 +14,7 @@ export default function Header(props: HeaderProps) {
         "relative flex flex-col items-center justify-center h-screen-70"
       }
     >
+      {/* TODO: optimize performance using sizes attribute */}
       <Image
         src={logoPromoSrc}
         fill

@@ -25,6 +25,7 @@ export default function MobileCarouselCard(props: CarouselCardProps) {
         {/* HACK: using hardcoded top-96 same as in carousel */}
         <div className="absolute top-96 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-white box-content">
           <div className="w-20 h-28 border-white border-8 relative">
+            {/* TODO: optimize performance using sizes attribute */}
             <Image src={logoSrcUrl} alt={""} fill />
           </div>
         </div>
