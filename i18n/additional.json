@@ -2,7 +2,7 @@
     "es": {
         "resumeBookReservation": {
             "reservationMessage": "resumen de reservación",
-            "instructions": "Por favor haz clic en continuar para confirmar tu reservación",
+            "instructions": "Por favor da clic en continuar para confirmar tu reservación",
             "reservationNumber": "El número de tu reservación es:",
             "closeButton": "Cerrar",
             "confirmButton": "Continuar"
@@ -19,11 +19,11 @@
     },
     "en": {
         "resumeBookReservation": {
-            "reservationMessage": "Booked reservation resume",
-            "instructions": "Please click confirm to finish your reservation",
-            "reservationNumber": "Your reservation number is:",
+            "reservationMessage": "Booked reservation summary",
+            "instructions": "Please click continue to confirm your booking",
+            "reservationNumber": "Your booking number is:",
             "closeButton": "Close",
-            "confirmButton": "Confirm"
+            "confirmButton": "Continue"
         },
         "thankYouPage": {
             "message": "Your reservation has been booked!",

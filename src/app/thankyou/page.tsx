@@ -4,7 +4,10 @@ import Button from "../components/button/button";
 import { isMobile } from "react-device-detect";
 import MobileNavbar from "../components/Mobile/navbar/navbar";
 import Navbar from "../components/desktop/navbar/navbar";
-import { useFetchAdditionalI18nQuery, useFetchI18nQuery } from "../../../lib/redux/features/i18n-api-slice";
+import {
+  useFetchAdditionalI18nQuery,
+  useFetchI18nQuery,
+} from "../../../lib/redux/features/i18n-api-slice";
 import { useAppSelector } from "../../../lib/redux";
 
 export default function ThankYou() {
@@ -20,14 +23,28 @@ export default function ThankYou() {
     router.push("/");
   };
 
+  if (isFetching) {
+    return <div>Loading</div>;
+  }
+  if (!content) {
+    return <div>Data error</div>;
+  }
+
   return (
     <>
       {isMobile && <MobileNavbar />}
       {!isMobile && <Navbar />}
       <div className="flex flex-col items-center justify-center gap-4 mt-12">
-        <div className="text-black text-center ">{additionalContent?.thankYouPage.message}</div>
-        <div className="text-black text-center">{additionalContent?.thankYouPage.thankyou}</div>
-        <Button onClick={handleReturn} text={additionalContent?.button.text ?? ''} />
+        <div className="text-black text-center ">
+          {additionalContent?.thankYouPage.message}
+        </div>
+        <div className="text-black text-center">
+          {additionalContent?.thankYouPage.thankyou}
+        </div>
+        <Button
+          onClick={handleReturn}
+          text={additionalContent?.button.text ?? ""}
+        />
       </div>
     </>
   );

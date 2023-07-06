@@ -18,8 +18,8 @@ export default function Navbar() {
   }
   return (
     <>
-      <nav className="sticky top-0 z-10 flex item-center text-xs py-8 pl-6 uppercase bg-white" key={'navbar'}>
-        <ul className="relative flex w-full item-center gap-6 text-black text-right">
+      <nav className="sticky top-0 z-10 flex item-center text-xs py-8 uppercase bg-white w-full" key={'navbar'}>
+        <ul className="relative flex w-full item-center gap-6 text-black text-right pl-6">
           <li className="relative grow left-0 flex items-center">
             <div className="relative w-52 h-8">
             <Image

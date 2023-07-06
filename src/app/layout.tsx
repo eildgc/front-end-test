@@ -27,7 +27,7 @@ export default function RootLayout({
         style={{ display: "flex", flexDirection: "column", height: "100%" }}
       >
         <Providers>
-          <div style={{ flex: "1 0 auto" }} className="max-w-7xl mx-auto">
+          <div style={{ flex: "1 0 auto" }} className="max-w-7xl w-full mx-auto">
             {children}
           </div>
           {isMobile && <MobileFooter />}

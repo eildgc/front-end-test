@@ -129,7 +129,6 @@ export interface ThankYouPage {
 export interface Button {
     text: string
 }
-
 export const i18nApiSlice = createApi({
     reducerPath: 'i18nApi',
     baseQuery: fetchBaseQuery({
@@ -144,7 +143,7 @@ export const i18nApiSlice = createApi({
             }),
             fetchAdditionalI18n: builder.query<AdditionalI18nContent, void>({
                 query() {
-                    return `/eildgc/frontend-test/main/i18n/additional.json`;
+                    return `/eildgc/front-end-test/main/i18n/additional.json`;
                 },
             }),
         };

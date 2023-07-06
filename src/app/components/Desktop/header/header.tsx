@@ -12,7 +12,9 @@ export default function Header(props: HeaderProps) {
   const { title, logoPromoSrc, discount, paragraphs } = props;
   return (
     <div
-      className={"relative flex flex-col items-center justify-center h-screen-70"}
+      className={
+        "relative flex flex-col items-center justify-center h-screen-70"
+      }
     >
       <Image
         src={logoPromoSrc}
@@ -20,20 +22,15 @@ export default function Header(props: HeaderProps) {
         alt=""
         className="absolute inset-0 -z-10"
       />
-      <div className="pl-24">
-        <div className="text-inherit text-5xl uppercase self-start">
+      <div className="">
+        <div className="flex text-inherit text-5xl uppercase justify-center">
           {title}
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center justify-center gap-4">
           <span className="text-4xl">{discount}</span>
-          {paragraphs.map((paragraph) => (
-            <p
-              className="block text-stone-700 text-xl justify-center"
-              key={paragraph}
-            >
-              {paragraph}
-            </p>
-          ))}
+          <p className="block text-stone-700 text-xl justify-center w-1/2">
+            {paragraphs.join(" ")}
+          </p>
         </div>
       </div>
     </div>

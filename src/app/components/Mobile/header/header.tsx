@@ -19,14 +19,9 @@ export default function MobileHeader(props: HeaderProps) {
       />
       <div className="text-inherit text-4xl uppercase">{title}</div>
       <span className="text-4xl">{discount}</span>
-      {paragraphs.map((paragraph) => (
-        <p
-          className="block px-8 text-stone-700 text-xl justify-center"
-          key={paragraph}
-        >
-          {paragraph}
-        </p>
-      ))}
+      <p className="block px-8 text-stone-700 text-xl justify-center">
+        {paragraphs.join(" ")}
+      </p>
     </div>
   );
 }
