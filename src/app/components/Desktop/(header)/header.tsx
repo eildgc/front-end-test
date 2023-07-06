@@ -11,8 +11,8 @@ interface HeaderProps {
 export default function Header(props: HeaderProps) {
   const { title, logoPromoSrc, discount, paragraphs } = props;
   return (
-    <div className={"flex flex-col items-center"}>
-      <Image src={logoPromoSrc} fill alt="" />
+    <div className={"flex flex-col items-center relative"}>
+      <Image src={logoPromoSrc} fill alt="" className="absolute inset-0 -z-10" />
       <div className="text-inherit text-5xl uppercase">{title}</div>
       <div className="flex">
         <span className="text-4xl">{discount}</span>

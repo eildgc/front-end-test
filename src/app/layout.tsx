@@ -29,31 +29,7 @@ export default function RootLayout({
             {children}
           </div>
           <footer className="shrink-0">
-            <Footer
-              socials={[
-                {
-                  srcUrl: "https://placekitten.com/24/24",
-                  logo: {
-                    srcUrl: "https://placekitten.com/24/24",
-                    alt: "dsa",
-                  },
-                },
-                {
-                  srcUrl: "https://placekitten.com/24/24",
-                  logo: {
-                    srcUrl: "https://placekitten.com/24/24",
-                    alt: "dsa",
-                  },
-                },
-              ]}
-              copy={"©Copyright Experiencias Xcaret Hotel S.A.P.I. de C.V."}
-              links={[
-                {
-                  srcUrl: "#",
-                  title: "Términos de Uso Aviso de Privacidad ",
-                },
-              ]}
-            />
+            <Footer />
           </footer>
         </Providers>
       </body>

@@ -102,20 +102,45 @@ export interface Link {
     href: string
 }
 
+export interface AdditionalI18nContent {
+    es: AdditionalLanguageContent
+    en: AdditionalLanguageContent
+}
+
+export interface AdditionalLanguageContent {
+    resumeBookReservation: ResumeBookReservation
+    thankYouPage: ThankYouPage
+}
+
+export interface ResumeBookReservation {
+    reservationMessage: string
+    instructions: string
+    closeButton: string
+    confirmButton: string
+}
+
+export interface ThankYouPage { }
+
+
 export const i18nApiSlice = createApi({
     reducerPath: 'i18nApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'https://raw.githubusercontent.com/javialcocer/test-json',
+        baseUrl: 'https://raw.githubusercontent.com',
     }),
     endpoints(builder) {
         return {
             fetchI18n: builder.query<I18nContent, void>({
                 query() {
-                    return `/main/data.json`;
+                    return `/javialcocer/test-json/main/data.json`;
+                },
+            }),
+            fetchAdditionalI18n: builder.query<AdditionalI18nContent, void>({
+                query() {
+                    return `/eildgc/frontend-test/main/i18n/additional.json`;
                 },
             }),
         };
     },
 });
 
-export const { useFetchI18nQuery } = i18nApiSlice;
+export const { useFetchI18nQuery, useFetchAdditionalI18nQuery } = i18nApiSlice;

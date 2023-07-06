@@ -9,22 +9,7 @@ import baselineFacebook from '@iconify/icons-ic/baseline-facebook';
 import twitterIcon from '@iconify/icons-mdi/twitter';
 import instagramIcon from '@iconify/icons-mdi/instagram';
 
-interface FooterProps {
-  // socials: {
-  //   srcUrl: string;
-  //   logo: {
-  //     srcUrl: string;
-  //     alt: string;
-  //   };
-  // }[];
-  // copy: string;
-  // links: {
-  //   title: string;
-  //   srcUrl: string;
-  // }[];
-}
-
-export default function Footer(props: FooterProps) {
+export default function Footer() {
   const language = useAppSelector((state) => state.i18n.language);
   const dispatch = useAppDispatch();
   const { data, isFetching } = useFetchI18nQuery();
@@ -34,7 +19,6 @@ export default function Footer(props: FooterProps) {
   const instagramHref = content?.prefooter.social.instagramUrl;
   const twitterHref = content?.prefooter.social.twitterUrl;
 
-  // const { socials = [], copy, links = [] } = props;
   return (
     <div className="flex flex-col bg-gray-700">
       <div className="flex gap-4 justify-center py-4">
@@ -53,18 +37,6 @@ export default function Footer(props: FooterProps) {
             <Icon icon={instagramIcon} width={24} height={24} className="text-white"></Icon>
           </a>
         </div>
-        {/* {content?.footer.links.map((link) => (
-          <div className="" key={link.href}>
-            <a href={link.href}>
-              <Image
-                src={social.logo.srcUrl}
-                alt={social.logo.alt}
-                width={24}
-                height={24}
-              />
-            </a>
-          </div>
-        ))} */}
       </div>
       <div className="flex flex-col py-2">
         <div className="uppercase text-sm px-4">

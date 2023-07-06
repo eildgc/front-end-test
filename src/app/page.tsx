@@ -8,21 +8,29 @@ import {
   isBrowser,
   isMobile,
 } from "react-device-detect";
-import CarouselCard from "./components/Mobile/carouselCard/carouselCard";
+import MobileCarouselCard from "./components/Mobile/carouselCard/carouselCard";
 import Banner from "./components/banner/banner";
 import Button from "./components/button/button";
 import Popup from "./components/Mobile/popup/popup";
 import { createPortal } from "react-dom";
 import { useRouter } from "next/navigation";
 import { useAppSelector } from "../../lib/redux";
-import { useFetchI18nQuery } from "../../lib/redux/features/i18n-api-slice";
-import Header from "./components/Mobile/header/header";
+import {
+  useFetchAdditionalI18nQuery,
+  useFetchI18nQuery,
+} from "../../lib/redux/features/i18n-api-slice";
+import MobileHeader from "./components/Mobile/header/header";
 import Carousel from "./components/carousel/carousel";
+import Header from "./components/Desktop/(header)/header";
+import CarouselCard from "./components/Desktop/carouselCard/carouselCard";
 
 export default function Home() {
   const language = useAppSelector((state) => state.i18n.language);
   const { data, isFetching } = useFetchI18nQuery();
+  const { data: additionalData, isFetching: isFetchingAdditionalData } =
+    useFetchAdditionalI18nQuery();
   const content = data?.[language];
+  const additionalContent = additionalData?.[language];
 
   const [reservationNumber, setReservationNumber] = useState(0);
   const [bookLocationType, setBookLocationType] = useState("");
@@ -65,32 +73,70 @@ export default function Home() {
           <Popup
             titleMessage={`Resumen de reservación ${bookLocationType}`}
             message={`Your reservation number is ${reservationNumber}`}
-            extraMessage={"Please click confirm to finish your reservation"}
+            extraMessage={additionalContent?.resumeBookReservation.instructions ?? ''}
             isOpen={popupOpen}
             onClose={handleClosePopup}
             onConfirm={handleConfirmBooking}
           />,
           document.body
         )}
+
       <header className=" text-black">
-        <Header
-          title={content.header.h1}
-          logoPromoSrc={content.promotions[0].imagePromo}
-          discount={content.header.discount}
-          paragraphs={content.header.paragraphs}
-        />
+        {isMobile && (
+          <MobileHeader
+            title={content.header.h1}
+            logoPromoSrc={content.promotions[0].imagePromo}
+            discount={content.header.discount}
+            paragraphs={content.header.paragraphs}
+          />
+        )}
+
+        {isBrowser && (
+          <Header
+            title={content.header.h1}
+            logoPromoSrc={content.promotions[0].imagePromo}
+            discount={content.header.discount}
+            paragraphs={content.header.paragraphs}
+          />
+        )}
       </header>
       <main className="bg-white text-black px-4">
         <div className="flex flex-col pb-8">
           {content.promotions.map((promotion) => (
-            <CarouselCard
-              key={promotion.title}
-              title={promotion.title}
-              subTitle={promotion.Subtitle}
-              paragraph={promotion.paragraphs[0]}
-              logoSrcUrl={promotion.logoPromo}
-              carousel={<Carousel slides={content.carousel.mobile} />}
-            />
+            <div key={promotion.title}>
+              {isMobile && (
+                <MobileCarouselCard
+                  key={promotion.title}
+                  title={promotion.title}
+                  subTitle={promotion.Subtitle}
+                  paragraph={promotion.paragraphs[0]}
+                  logoSrcUrl={promotion.logoPromo}
+                  carousel={<Carousel slides={content.carousel.mobile} />}
+                >
+                  <Button
+                    href={content.buttonBook.href}
+                    text={content.buttonBook.text}
+                    onClick={() => handleClick(promotion.title)}
+                  />
+                </MobileCarouselCard>
+              )}
+              {isBrowser && (
+                <CarouselCard
+                  key={promotion.title}
+                  title={promotion.title}
+                  subTitle={promotion.Subtitle}
+                  paragraph={promotion.paragraphs[0]}
+                  logoSrcUrl={promotion.logoPromo}
+                  carousel={<Carousel slides={content.carousel.mobile} />}
+                >
+                  <Button
+                    href={content.buttonBook.href}
+                    text={content.buttonBook.text}
+                    onClick={() => handleClick(promotion.title)}
+                  />
+                </CarouselCard>
+              )}
+            </div>
           ))}
           {/* <CarouselCard
             title="HOTEL XCARET MÉXICO"
@@ -124,9 +170,7 @@ export default function Home() {
             onClick={() => handleClick("CASA DE LA PLAYA")}
           /> */}
         </div>
-        <Banner
-          text={content.legals}
-        />
+        <Banner text={content.legals} />
       </main>
       {/* </MobileView> */}
     </>

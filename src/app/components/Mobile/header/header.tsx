@@ -7,7 +7,7 @@ interface HeaderProps {
   paragraphs: string[];
 }
 
-export default function Header(props: HeaderProps) {
+export default function MobileHeader(props: HeaderProps) {
   const { title, logoPromoSrc, discount, paragraphs } = props;
   return (
     <div className={"relative flex flex-col items-center gap-y-4 py-16 mb-8"}>
